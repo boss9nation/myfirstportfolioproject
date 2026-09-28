@@ -169,13 +169,15 @@ header {
 .about {
   padding: 5rem 10%;
   background: var(--light);
+  background-color: black;
 }
 
 .about h2, .projects h2, .contact h2 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2.5rem;
-  color: var(--dark);
+  color: white;
+  background-color: red;
 }
 
 .about-grid {
@@ -188,6 +190,8 @@ header {
 .about-text p {
   margin-bottom: 1rem;
   font-size: 1.05rem;
+  color: white;
+  animation: slideIn 0.8s ease-out both;
 }
 
 .about-image img {
@@ -201,6 +205,7 @@ header {
     */
 .projects {
   padding: 5rem 10%;
+  background-color: skyblue;
 }
 
 .cards {
@@ -237,7 +242,9 @@ header {
    ======================== */
 .contact {
   padding: 5rem 10%;
-  background: var(--light);
+  background: linear-gradient(135deg, #ecf0f1 0%, #d6eaf8 50%, #fef3c7 100%);
+  background-size: 300% 300%;
+  animation: contactBackground 10s ease infinite;
 }
 
 .contact-form {
@@ -318,4 +325,27 @@ footer {
   .about-grid { grid-template-columns: 1fr; }
   .cards { grid-template-columns: 1fr; }
   .about, .projects, .contact { padding: 3rem 5%; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes contactBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
