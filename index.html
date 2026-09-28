@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">MyPortfolio</div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+      <section id="home" class="hero">
+        <h1>Hello, I'm <span class="highlight">Promise Osezale</span></h1>
+        <p>I build beautiful websites with HTML & CSS</p>
+        <a href="#contact" class="btn">Get in Touch</a>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I am a passionate web developer who loves creating clean,
+              responsive websites.
+            </p>
+            <p>I specialize in HTML, CSS, and JavaScript.</p>
+          </div>
+          <figure class="about-image">
+            <img src="asset/profile.png" alt="Promise Osezale - Web Developer" />
+          </figure>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Project One</h3>
+            <p>A responsive website built with HTML and CSS.</p>
+            <a href="#" class="btn btn-small">View Project</a>
+          </article>
+          <article class="card">
+            <h3>Project Two</h3>
+            <p>A landing page with animations and transitions.</p>
+            <a href="#" class="btn btn-small">View Project</a>
+          </article>
+          <article class="card">
+            <h3>Project Three</h3>
+            <p>A portfolio website showcasing creative work.</p>
+            <a href="#" class="btn btn-small">View Project</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form class="contact-form" action="#" method="POST">
+          <label for="name">Your Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="John Doe"
+            required
+          />
+
+          <label for="email">Your Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="john@example.com"
+            required
+          />
+
+          <label for="message">Your Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Write your message here..."
+            required
+          ></textarea>
+
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 Promise Osezale. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Mobile hamburger toggle
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+
+      hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        hamburger.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+
+      // Close mobile menu when a link is clicked
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', false);
+        });
+      });
+
+      // Active-link highlighting on scroll
+      const sections = document.querySelectorAll('main section[id]');
+      const navAnchors = document.querySelectorAll('.nav-links a');
+
+      const highlightNav = () => {
+        let current = '';
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 120;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+        navAnchors.forEach((a) => {
+          a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
+        });
+      };
+
+      window.addEventListener('scroll', highlightNav);
+      window.addEventListener('load', highlightNav);
+    </script>
+  </body>
+</html>
